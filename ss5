@@ -1,4 +1,4 @@
 # Add startup option here
-SS5_OPTS="-u root -b 0.0.0.0:$port"
+SS5_OPTS="-u root -b 0.0.0.0:5555"
 
 echo $SS5_OPTS
