@@ -137,6 +137,12 @@ sed -i '/echo -n "Starting ss5... "/a if [ ! -d "/var/run/ss5/" ];then mkdir /va
 sed -i '54c rm -rf /var/run/ss5/' $confFile
 sed -i '18c [[ ${NETWORKING} = "no" ]] && exit 0' $confFile
 
+
+portFile=/etc/sysconfig/ss5
+sed -i '2c SS5_OPTS="-u root -b 0.0.0.0:' $portFile
+sed -i "/0.0.0:/ s/$/$port\"/" $portFile
+
+
 #判断ss5文件夹是否存在、
 if [ ! -d "/var/run/ss5/" ];then
 mkdir /var/run/ss5/
@@ -144,6 +150,9 @@ echo "create ss5 success!"
 else
 echo "/ss5/ is OK!"
 fi
+
+
+
 }
 
 #5.检测是否安装完整
